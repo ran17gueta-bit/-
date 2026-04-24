@@ -299,9 +299,21 @@ function setReady(kk,ev){
   render();calcStats();scheduleSave();
 }
 
+function unsetReady(kk,ev){
+  ev.stopPropagation();
+  ST[kk].ready=false;
+  render();calcStats();scheduleSave();
+}
+
 function setExecuted(kk,ev){
   ev.stopPropagation();
   ST[kk].executed=true;
+  render();calcStats();scheduleSave();
+}
+
+function unsetExecuted(kk,ev){
+  ev.stopPropagation();
+  ST[kk].executed=false;
   render();calcStats();scheduleSave();
 }
 
@@ -370,10 +382,18 @@ function render(){
       }
 
       var rbtn=st.executed
-        ?'<div class="rdone">תחנה מוכנה ✓</div>'
-          +'<div class="edone">בוצע בפועל ✓</div>'
+        ?'<div style="display:flex;gap:8px;align-items:center">'
+          +'<div class="rdone" style="flex:1">תחנה מוכנה ✓</div>'
+          +'</div>'
+          +'<div style="display:flex;gap:8px;align-items:center;margin-top:8px">'
+          +'<div class="edone" style="flex:1">בוצע בפועל ✓</div>'
+          +'<button style="padding:8px 12px;border-radius:8px;border:1px solid #ddd;background:#fff;font-size:12px;cursor:pointer;font-family:inherit;color:#888;white-space:nowrap" onclick="unsetExecuted(\''+ekk+'\',event)">בטל</button>'
+          +'</div>'
         :st.ready
-        ?'<div class="rdone">תחנה מוכנה ✓</div>'
+        ?'<div style="display:flex;gap:8px;align-items:center">'
+          +'<div class="rdone" style="flex:1">תחנה מוכנה ✓</div>'
+          +'<button style="padding:8px 12px;border-radius:8px;border:1px solid #ddd;background:#fff;font-size:12px;cursor:pointer;font-family:inherit;color:#888;white-space:nowrap" onclick="unsetReady(\''+ekk+'\',event)">בטל</button>'
+          +'</div>'
           +'<button class="ebtn" onclick="setExecuted(\''+ekk+'\',event)">סמן ביצוע תחנה</button>'
         :'<button class="rbtn"'+(allok?'':' disabled')+' onclick="setReady(\''+ekk+'\',event)">'
           +(allok?'סמן תחנה מוכנה ✓':'השלם כל הסעיפים ('+cnt+'/'+CL.length+')')
