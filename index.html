@@ -24,7 +24,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
 .sdot.red{background:#E24B4A}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 .stxt{font-size:10px;color:#888}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
 .sc{background:#fff;border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #e5e5e0}
 .sc-num{font-size:24px;font-weight:700}
 .sc-lbl{font-size:11px;color:#888;margin-top:1px}
@@ -61,7 +61,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
 .rbtn{width:100%;padding:13px;border-radius:10px;border:1.5px solid #5DCAA5;background:#E1F5EE;color:#085041;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:block;min-height:48px}
 .rbtn:disabled{opacity:0.3;cursor:not-allowed}
 .rdone{width:100%;padding:13px;border-radius:10px;background:#1D9E75;color:#fff;font-size:14px;font-weight:600;text-align:center;display:block}
-.abadge{display:inline-block;background:#FCEBEB;color:#A32D2D;font-size:11px;border-radius:6px;padding:4px 9px;border:1px solid #F09595;margin-bottom:8px}
+.ebtn{width:100%;padding:13px;border-radius:10px;border:1.5px solid #185FA5;background:#E6F1FB;color:#042C53;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:block;min-height:48px;margin-top:8px}
+.edone{width:100%;padding:13px;border-radius:10px;background:#185FA5;color:#fff;font-size:14px;font-weight:600;text-align:center;display:block;margin-top:8px}
+.tk-wrap{border:1px solid #e5e5e0;border-radius:10px;overflow:hidden;margin:0 16px 12px;background:#fff}
+.tk-header{padding:10px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#fafafa;border-bottom:1px solid #f0f0f0;min-height:44px}
+.tk-title{font-size:13px;font-weight:600;color:#1a1a1a}
+.tk-count{font-size:11px;color:#888}
+.tk-body{display:none}
+.tk-body.open{display:block}
+.tk-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-bottom:1px solid #f5f5f5;cursor:pointer;min-height:46px}
+.tk-item:last-child{border-bottom:none}
+.tk-item:active{background:#fafafa}
+.tk-cb{width:22px;height:22px;min-width:22px;border-radius:6px;border:2px solid #ccc;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:#fff}
+.tk-cb.on{background:#1D9E75;border-color:#1D9E75}
+.tk-lbl{font-size:13px;color:#1a1a1a}
+.tk-lbl.done{color:#aaa;text-decoration:line-through}
 .alert-box{background:#FCEBEB;border-radius:10px;border:1px solid #F09595;padding:12px 16px;margin-bottom:10px}
 .alert-box-title{font-size:13px;font-weight:700;color:#A32D2D;margin-bottom:5px}
 .aitem{font-size:12px;color:#791F1F;margin-bottom:3px}
@@ -90,6 +104,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
 </div>
 <div class="stats">
   <div class="sc"><div class="sc-num" id="s0" style="color:#1D9E75">0</div><div class="sc-lbl">מוכנות</div></div>
+  <div class="sc"><div class="sc-num" id="s3" style="color:#185FA5">0</div><div class="sc-lbl">בוצעו</div></div>
   <div class="sc"><div class="sc-num" id="s1" style="color:#BA7517">0</div><div class="sc-lbl">בתהליך</div></div>
   <div class="sc"><div class="sc-num" id="s2" style="color:#A32D2D">0</div><div class="sc-lbl">חריגות</div></div>
 </div>
@@ -116,7 +131,7 @@ var CL=[
   "בדיקת קשר",
   "בדיקת דלק ותקינות רכב",
   "מעבר על שיטת פינוי ומיקום אמבולנס",
-  "בדיקות קליטה ותקשורת מול שולם",
+  "בדיקות קליטה ותקשורת מול שולט",
   "מעבר על פלואו יומי וציוד"
 ];
 
@@ -148,7 +163,12 @@ var lastSaved="";
 
 function k(n,g,s){return n+"_"+g+"_"+s;}
 function esc(s){return s.replace(/\\/g,"\\\\").replace(/'/g,"\\'");}
-function empty(){return {ch:[false,false,false,false,false,false,false,false],note:"",alert:false,ready:false};}
+function empty(){return {ch:[false,false,false,false,false,false,false,false],note:"",alert:false,ready:false,executed:false};}
+
+var TK_ITEMS=["אוכל","מים","קשר","רפואי"];
+var TK_OP={};
+
+function tkKey(n,g){return "tk_"+n+"_"+g;}
 
 function initAll(){
   GS.forEach(function(g){
@@ -157,6 +177,8 @@ function initAll(){
         var kk=k(n,g,s.n);
         if(!ST[kk]) ST[kk]=empty();
       });
+      var tk=tkKey(n,g);
+      if(!ST[tk]) ST[tk]={ch:[false,false,false,false]};
     });
   });
 }
@@ -254,6 +276,15 @@ function showTab(t){
   document.getElementById("ap").style.display=t===1?"block":"none";
 }
 
+function togTkOpen(tk){TK_OP[tk]=!TK_OP[tk];render();}
+
+function togTkCheck(tk,i,ev){
+  ev.stopPropagation();
+  if(!ST[tk]) ST[tk]={ch:[false,false,false,false]};
+  ST[tk].ch[i]=!ST[tk].ch[i];
+  render();scheduleSave();
+}
+
 function togOpen(kk){OP[kk]=!OP[kk];render();}
 
 function togCheck(kk,i,ev){
@@ -265,6 +296,12 @@ function togCheck(kk,i,ev){
 function setReady(kk,ev){
   ev.stopPropagation();
   ST[kk].ready=true;
+  render();calcStats();scheduleSave();
+}
+
+function setExecuted(kk,ev){
+  ev.stopPropagation();
+  ST[kk].executed=true;
   render();calcStats();scheduleSave();
 }
 
@@ -282,7 +319,36 @@ function render(){
     var rc=slist.filter(function(s){var st=ST[k(night,g,s.n)];return st&&st.ready;}).length;
     var pct=slist.length?Math.round(rc/slist.length*100):0;
     var pcol=pct===100?"#1D9E75":"#1a1a1a";
+    var tk=tkKey(night,g);
+    if(!ST[tk]) ST[tk]={ch:[false,false,false,false]};
+    var tkSt=ST[tk];
+    var tkCnt=tkSt.ch.filter(Boolean).length;
+    var tkAll=tkCnt===TK_ITEMS.length;
+    var tkOpen=!!TK_OP[tk];
+    var tkEkk=esc(tk);
+
+    var tkItems="";
+    TK_ITEMS.forEach(function(item,ci){
+      var chk=tkSt.ch[ci];
+      tkItems+='<div class="tk-item" onclick="togTkCheck(\''+tkEkk+'\','+ci+',event)">'
+        +'<div class="tk-cb'+(chk?' on':'')+'>'+(chk?'✓':'')+'</div>'
+        +'<div class="tk-lbl'+(chk?' done':'')+'">'+item+'</div>'
+        +'</div>';
+    });
+
     var shtml="";
+    var tkHTML='<div class="tk-wrap">'
+      +'<div class="tk-header" onclick="togTkOpen(\''+tkEkk+'\')"> '
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<span style="font-size:14px">🔍</span>'
+      +'<span class="tk-title">תקינות צוות</span>'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;gap:6px">'
+      +'<span class="tk-count">'+(tkAll?'✓ תקין':tkCnt+'/'+TK_ITEMS.length)+'</span>'
+      +'<span style="font-size:10px;color:#aaa;'+(tkOpen?'transform:rotate(180deg)':'')+'display:inline-block">▼</span>'
+      +'</div></div>'
+      +'<div class="tk-body'+(tkOpen?' open':'')+'">'+tkItems+'</div>'
+      +'</div>';
 
     slist.forEach(function(s,i){
       var kk=k(night,g,s.n);
@@ -291,7 +357,8 @@ function render(){
       var cnt=st.ch.filter(Boolean).length;
       var allok=cnt===CL.length;
       var isOpen=!!OP[kk];
-      var dcls=st.ready?"dv":cnt>0?"da":"dg";
+      var dcls=st.executed?"dv":st.ready?"dv":cnt>0?"da":"dg";
+      var dotStyle=st.executed?"background:#185FA5":"";
 
       var clitems="";
       for(var ci=0;ci<CL.length;ci++){
@@ -302,8 +369,12 @@ function render(){
           +'</div>';
       }
 
-      var rbtn=st.ready
+      var rbtn=st.executed
         ?'<div class="rdone">תחנה מוכנה ✓</div>'
+          +'<div class="edone">בוצע בפועל ✓</div>'
+        :st.ready
+        ?'<div class="rdone">תחנה מוכנה ✓</div>'
+          +'<button class="ebtn" onclick="setExecuted(\''+ekk+'\',event)">סמן ביצוע תחנה</button>'
         :'<button class="rbtn"'+(allok?'':' disabled')+' onclick="setReady(\''+ekk+'\',event)">'
           +(allok?'סמן תחנה מוכנה ✓':'השלם כל הסעיפים ('+cnt+'/'+CL.length+')')
           +'</button>';
@@ -311,7 +382,7 @@ function render(){
       shtml+='<div class="sr">'
         +'<div class="sh" onclick="togOpen(\''+ekk+'\')"> '
         +'<div style="display:flex;align-items:center;gap:10px;min-width:0;flex:1">'
-        +'<span class="dot '+dcls+'"></span>'
+        +'<span class="dot '+dcls+'"'+(dotStyle?' style="'+dotStyle+'"':'')+' ></span>'
         +'<div style="min-width:0;flex:1">'
         +'<div style="display:flex;align-items:center;gap:5px">'
         +'<span style="font-size:12px;color:#aaa;flex-shrink:0">'+(i+1)+'.</span>'
@@ -340,6 +411,7 @@ function render(){
       +'<div style="font-size:10px;color:#888">'+rc+'/'+slist.length+'</div>'
       +'</div></div>'
       +'<div class="pbar-bg"><div class="pbar-fg" style="width:'+pct+'%"></div></div>'
+      +tkHTML
       +shtml+'</div>';
   });
   document.getElementById("mp").innerHTML=html;
@@ -348,11 +420,12 @@ function render(){
 function total(){return GS.reduce(function(a,g){return a+(ROT[night][g]||[]).length;},0);}
 
 function calcStats(){
-  var tot=total(),done=0,prog=0,al=0;
+  var tot=total(),done=0,prog=0,al=0,exec=0;
   GS.forEach(function(g){
     (ROT[night][g]||[]).forEach(function(s){
       var st=ST[k(night,g,s.n)];
       if(!st) return;
+      if(st.executed) exec++;
       if(st.ready) done++;
       else if(st.ch.some(Boolean)) prog++;
       if(st.alert) al++;
@@ -361,9 +434,10 @@ function calcStats(){
   document.getElementById("s0").textContent=done;
   document.getElementById("s1").textContent=prog;
   document.getElementById("s2").textContent=al;
+  document.getElementById("s3").textContent=exec;
   var pct=tot?Math.round(done/tot*100):0;
   document.getElementById("pbar").style.width=pct+"%";
-  document.getElementById("plbl").textContent=done+" מתוך "+tot+" תחנות מוכנות";
+  document.getElementById("plbl").textContent=done+" מוכנות · "+exec+" בוצעו · מתוך "+tot;
   doAlerts();
 }
 
