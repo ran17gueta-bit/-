@@ -49,7 +49,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
 .sd.open{display:block}
 .note{width:100%;font-size:13px;border:1px solid #e0e0e0;border-radius:8px;padding:9px 11px;resize:none;background:#fafafa;color:#1a1a1a;font-family:inherit;direction:rtl;margin-bottom:10px;display:block;min-height:48px}
 .note:focus{outline:none;border-color:#999}
-.cl-lbl{font-size:11px;font-weight:700;color:#888;margin-bottom:6px;letter-spacing:0.03em}
+.cl-lbl{font-size:11px;font-weight:700;color:#888;margin-bottom:6px}
 .cl-wrap{border:1px solid #e5e5e0;border-radius:10px;overflow:hidden;margin-bottom:12px;background:#fff}
 .ci{display:flex;flex-direction:row;align-items:center;gap:12px;padding:13px 12px;border-bottom:1px solid #f5f5f5;cursor:pointer;width:100%;background:none;min-height:50px}
 .ci:last-child{border-bottom:none}
@@ -69,7 +69,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
 </head>
 <body>
 <div class="app">
-
 <div class="hdr">
   <div class="hdr-row">
     <div>
@@ -89,29 +88,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
     <div class="stxt" id="stxt">מתחבר...</div>
   </div>
 </div>
-
 <div class="stats">
   <div class="sc"><div class="sc-num" id="s0" style="color:#1D9E75">0</div><div class="sc-lbl">מוכנות</div></div>
   <div class="sc"><div class="sc-num" id="s1" style="color:#BA7517">0</div><div class="sc-lbl">בתהליך</div></div>
   <div class="sc"><div class="sc-num" id="s2" style="color:#A32D2D">0</div><div class="sc-lbl">חריגות</div></div>
 </div>
-
 <div class="tabs">
   <div class="tab on" id="t0" onclick="showTab(0)">כל הקבוצות</div>
   <div class="tab" id="t1" onclick="showTab(1)">חריגות</div>
 </div>
-
 <div id="ap" style="display:none">
   <div class="alert-box">
     <div class="alert-box-title">חריגות פעילות</div>
     <div id="ai" style="font-size:12px;color:#791F1F">אין חריגות כרגע</div>
   </div>
 </div>
-
 <div id="mp"></div>
 </div>
 
 <script>
+var FB_URL = "https://meshakem-eca8d-default-rtdb.firebaseio.com/mission.json";
+
 var CL=[
   "מעבר על תיק תרגיל ולימודו",
   "מסדר ציוד מגרש – הדרכתי / לוגיסטי",
@@ -126,16 +123,16 @@ var CL=[
 var ROT={
   1:{
     "הלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"},{n:"חיפוש הריסות",c:"ים · ויבגי"}],
-    "קוטלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:"מסק\"ר נפיץ",c:"רייס · זמל"},{n:"רטוב יום",c:"רייס · זמל"}],
+    "קוטלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:'מסק"ר נפיץ',c:"רייס · זמל"},{n:"רטוב יום",c:"רייס · זמל"}],
     "אדלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"},{n:"נוטש בוואדי",c:"קוק · אליפז"}]
   },
   2:{
     "הלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"},{n:"נוטש בוואדי",c:"קוק · אליפז"}],
     "קוטלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"},{n:"חיפוש הריסות",c:"ים · ויבגי"}],
-    "אדלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:"מסק\"ר נפיץ",c:"רייס · זמל"},{n:"רטוב יום",c:"רייס · זמל"}]
+    "אדלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:'מסק"ר נפיץ',c:"רייס · זמל"},{n:"רטוב יום",c:"רייס · זמל"}]
   },
   3:{
-    "הלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:"מסק\"ר נפיץ",c:"רייס · זמל"}],
+    "הלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:'מסק"ר נפיץ',c:"רייס · זמל"}],
     "קוטלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"}],
     "אדלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"}]
   }
@@ -145,9 +142,9 @@ var GS=["הלר","קוטלר","אדלר"];
 var night=1;
 var ST={};
 var OP={};
-var SKEY="mission_v1";
 var saveT=null;
 var pollT=null;
+var lastSaved="";
 
 function k(n,g,s){return n+"_"+g+"_"+s;}
 function esc(s){return s.replace(/\\/g,"\\\\").replace(/'/g,"\\'");}
@@ -176,31 +173,70 @@ function setSyncUI(state,msg){
   txt.textContent=msg;
 }
 
-function save(){
+async function saveToFirebase(){
   try{
-    localStorage.setItem(SKEY,JSON.stringify(ST));
-    setSyncUI("ok","נשמר "+ts());
-  }catch(e){setSyncUI("err","שגיאת שמירה");}
+    var data=JSON.stringify(ST);
+    if(data===lastSaved) return;
+    setSyncUI("amber","שומר...");
+    var res=await fetch(FB_URL,{method:"PUT",body:data,headers:{"Content-Type":"application/json"}});
+    if(res.ok){
+      lastSaved=data;
+      setSyncUI("ok","עודכן "+ts());
+    } else {
+      setSyncUI("err","שגיאת שמירה");
+    }
+  }catch(e){
+    setSyncUI("err","אין חיבור");
+  }
 }
 
-function load(){
+async function loadFromFirebase(){
   try{
-    var raw=localStorage.getItem(SKEY);
-    if(raw){
-      var loaded=JSON.parse(raw);
-      Object.keys(loaded).forEach(function(kk){
-        if(!loaded[kk].ch) loaded[kk].ch=[false,false,false,false,false,false,false,false];
-        ST[kk]=loaded[kk];
-      });
+    setSyncUI("amber","מתחבר...");
+    var res=await fetch(FB_URL);
+    if(res.ok){
+      var data=await res.json();
+      if(data){
+        Object.keys(data).forEach(function(kk){
+          if(!data[kk].ch) data[kk].ch=[false,false,false,false,false,false,false,false];
+          ST[kk]=data[kk];
+        });
+        lastSaved=JSON.stringify(ST);
+      }
+      setSyncUI("ok","מחובר "+ts());
     }
-    setSyncUI("ok","עודכן "+ts());
-  }catch(e){setSyncUI("err","שגיאה");}
-  render();calcStats();
+  }catch(e){
+    setSyncUI("err","אין חיבור");
+  }
+  render();
+  calcStats();
+}
+
+async function pollFirebase(){
+  try{
+    var res=await fetch(FB_URL);
+    if(res.ok){
+      var data=await res.json();
+      if(data){
+        var incoming=JSON.stringify(data);
+        if(incoming!==lastSaved){
+          Object.keys(data).forEach(function(kk){
+            if(!data[kk].ch) data[kk].ch=[false,false,false,false,false,false,false,false];
+            ST[kk]=data[kk];
+          });
+          lastSaved=incoming;
+          render();
+          calcStats();
+          setSyncUI("ok","עודכן "+ts());
+        }
+      }
+    }
+  }catch(e){}
 }
 
 function scheduleSave(){
   if(saveT) clearTimeout(saveT);
-  saveT=setTimeout(save,500);
+  saveT=setTimeout(saveToFirebase,800);
 }
 
 function sw(n){
@@ -345,7 +381,9 @@ function doAlerts(){
 }
 
 initAll();
-load();
+loadFromFirebase().then(function(){
+  pollT=setInterval(pollFirebase,5000);
+});
 </script>
 </body>
 </html>
