@@ -25,9 +25,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 .stxt{font-size:10px;color:#888}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
-.sc{background:#fff;border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #e5e5e0}
-.sc-num{font-size:24px;font-weight:700}
-.sc-lbl{font-size:11px;color:#888;margin-top:1px}
+.sc{background:#fff;border-radius:10px;padding:10px 6px;text-align:center;border:1px solid #e5e5e0}
+.sc-num{font-size:22px;font-weight:700}
+.sc-lbl{font-size:10px;color:#888;margin-top:1px}
 .tabs{display:flex;gap:6px;margin-bottom:10px}
 .tab{flex:1;padding:9px;font-size:13px;border:1px solid #ddd;border-radius:10px;cursor:pointer;background:#fff;color:#888;text-align:center;font-family:inherit;min-height:38px}
 .tab.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a;font-weight:600}
@@ -42,53 +42,48 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
 .sname{font-size:14px;font-weight:600;color:#1a1a1a}
 .scmd{font-size:11px;color:#888;margin-top:2px}
 .dot{width:10px;height:10px;min-width:10px;border-radius:50%;display:inline-block;flex-shrink:0}
-.dg{background:#ccc}
-.da{background:#EF9F27}
-.dv{background:#1D9E75}
+.dg{background:#ccc}.da{background:#EF9F27}.dv{background:#1D9E75}.de{background:#185FA5}
 .sd{padding:0 16px 16px;display:none}
 .sd.open{display:block}
 .note{width:100%;font-size:13px;border:1px solid #e0e0e0;border-radius:8px;padding:9px 11px;resize:none;background:#fafafa;color:#1a1a1a;font-family:inherit;direction:rtl;margin-bottom:10px;display:block;min-height:48px}
 .note:focus{outline:none;border-color:#999}
 .cl-lbl{font-size:11px;font-weight:700;color:#888;margin-bottom:6px}
 .cl-wrap{border:1px solid #e5e5e0;border-radius:10px;overflow:hidden;margin-bottom:12px;background:#fff}
-.ci{display:flex;flex-direction:row;align-items:center;gap:12px;padding:13px 12px;border-bottom:1px solid #f5f5f5;cursor:pointer;width:100%;background:none;min-height:50px}
+.ci{display:flex;align-items:center;gap:12px;padding:13px 12px;border-bottom:1px solid #f5f5f5;cursor:pointer;min-height:50px}
 .ci:last-child{border-bottom:none}
 .ci:active{background:#fafafa}
 .cb{width:24px;height:24px;min-width:24px;border-radius:6px;border:2px solid #ccc;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;font-weight:700;color:#fff}
 .cb.on{background:#1D9E75;border-color:#1D9E75}
 .clbl{font-size:13px;color:#1a1a1a;line-height:1.5;flex:1;text-align:right}
 .clbl.done{color:#aaa;text-decoration:line-through}
-.rbtn{width:100%;padding:13px;border-radius:10px;border:1.5px solid #5DCAA5;background:#E1F5EE;color:#085041;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:block;min-height:48px}
+.rbtn{width:100%;padding:13px;border-radius:10px;border:1.5px solid #5DCAA5;background:#E1F5EE;color:#085041;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;min-height:48px}
 .rbtn:disabled{opacity:0.3;cursor:not-allowed}
-.rdone{width:100%;padding:13px;border-radius:10px;background:#1D9E75;color:#fff;font-size:14px;font-weight:600;text-align:center;display:block}
-.ebtn{width:100%;padding:13px;border-radius:10px;border:1.5px solid #185FA5;background:#E6F1FB;color:#042C53;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:block;min-height:48px;margin-top:8px}
-.edone{width:100%;padding:13px;border-radius:10px;background:#185FA5;color:#fff;font-size:14px;font-weight:600;text-align:center;display:block;margin-top:8px}
+.rdone{flex:1;padding:13px;border-radius:10px;background:#1D9E75;color:#fff;font-size:14px;font-weight:600;text-align:center}
+.ebtn{width:100%;padding:13px;border-radius:10px;border:1.5px solid #185FA5;background:#E6F1FB;color:#042C53;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;min-height:48px;margin-top:8px}
+.edone{flex:1;padding:13px;border-radius:10px;background:#185FA5;color:#fff;font-size:14px;font-weight:600;text-align:center}
+.undo-btn{padding:8px 12px;border-radius:8px;border:1px solid #ddd;background:#fff;font-size:12px;cursor:pointer;font-family:inherit;color:#888;white-space:nowrap;flex-shrink:0}
 .tk-wrap{border:1px solid #e5e5e0;border-radius:10px;overflow:hidden;margin:0 16px 12px;background:#fff}
-.tk-header{padding:10px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#fafafa;border-bottom:1px solid #f0f0f0;min-height:44px}
+.tk-hdr{padding:10px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#fafafa;border-bottom:1px solid #f0f0f0;min-height:44px}
 .tk-title{font-size:13px;font-weight:600;color:#1a1a1a}
-.tk-count{font-size:11px;color:#888}
 .tk-body{display:none}
 .tk-body.open{display:block}
-.tk-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-bottom:1px solid #f5f5f5;cursor:pointer;min-height:46px}
+.tk-item{display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid #f5f5f5;cursor:pointer;min-height:46px}
 .tk-item:last-child{border-bottom:none}
-.tk-item:active{background:#fafafa}
 .tk-cb{width:22px;height:22px;min-width:22px;border-radius:6px;border:2px solid #ccc;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:700;color:#fff}
 .tk-cb.on{background:#1D9E75;border-color:#1D9E75}
-.tk-lbl{font-size:13px;color:#1a1a1a}
+.tk-lbl{font-size:13px;color:#1a1a1a;flex:1;text-align:right}
 .tk-lbl.done{color:#aaa;text-decoration:line-through}
 .alert-box{background:#FCEBEB;border-radius:10px;border:1px solid #F09595;padding:12px 16px;margin-bottom:10px}
 .alert-box-title{font-size:13px;font-weight:700;color:#A32D2D;margin-bottom:5px}
 .aitem{font-size:12px;color:#791F1F;margin-bottom:3px}
+.abadge{display:inline-block;background:#FCEBEB;color:#A32D2D;font-size:11px;border-radius:6px;padding:4px 9px;border:1px solid #F09595;margin-bottom:8px}
 </style>
 </head>
 <body>
 <div class="app">
 <div class="hdr">
   <div class="hdr-row">
-    <div>
-      <div class="hdr-title">שליטה ועמידה במשימה</div>
-      <div class="hdr-sub">3 קבוצות · 6 מפקדים</div>
-    </div>
+    <div><div class="hdr-title">שליטה ועמידה במשימה</div><div class="hdr-sub">3 קבוצות · 6 מפקדים</div></div>
     <div class="night-row">
       <button class="nbtn on" id="nb1" onclick="sw(1)">לילה 1</button>
       <button class="nbtn" id="nb2" onclick="sw(2)">לילה 2</button>
@@ -97,10 +92,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
   </div>
   <div class="pbar-bg"><div class="pbar-fg" id="pbar"></div></div>
   <div class="pbar-lbl" id="plbl">טוען...</div>
-  <div class="sync-row">
-    <div class="sdot amber" id="sdot"></div>
-    <div class="stxt" id="stxt">מתחבר...</div>
-  </div>
+  <div class="sync-row"><div class="sdot amber" id="sdot"></div><div class="stxt" id="stxt">מתחבר...</div></div>
 </div>
 <div class="stats">
   <div class="sc"><div class="sc-num" id="s0" style="color:#1D9E75">0</div><div class="sc-lbl">מוכנות</div></div>
@@ -113,326 +105,184 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;di
   <div class="tab" id="t1" onclick="showTab(1)">חריגות</div>
 </div>
 <div id="ap" style="display:none">
-  <div class="alert-box">
-    <div class="alert-box-title">חריגות פעילות</div>
-    <div id="ai" style="font-size:12px;color:#791F1F">אין חריגות כרגע</div>
-  </div>
+  <div class="alert-box"><div class="alert-box-title">חריגות פעילות</div><div id="ai" style="font-size:12px;color:#791F1F">אין חריגות כרגע</div></div>
 </div>
 <div id="mp"></div>
 </div>
 
 <script>
-var FB_URL = "https://meshakem-eca8d-default-rtdb.firebaseio.com/mission.json";
-
-var CL=[
-  "מעבר על תיק תרגיל ולימודו",
-  "מסדר ציוד מגרש – הדרכתי / לוגיסטי",
-  "מסדר חפ\"ק ומענה רפואי מותאם – בטיחות",
-  "בדיקת קשר",
-  "בדיקת דלק ותקינות רכב",
-  "מעבר על שיטת פינוי ומיקום אמבולנס",
-  "בדיקות קליטה ותקשורת מול שולט",
-  "מעבר על פלואו יומי וציוד"
-];
-
+var FB="https://meshakem-eca8d-default-rtdb.firebaseio.com/mission.json";
+var CL=["מעבר על תיק תרגיל ולימודו","מסדר ציוד מגרש – הדרכתי / לוגיסטי","מסדר חפק ומענה רפואי מותאם – בטיחות","בדיקת קשר","בדיקת דלק ותקינות רכב","מעבר על שיטת פינוי ומיקום אמבולנס","בדיקות קליטה ותקשורת מול שולט","מעבר על פלואו יומי וציוד"];
+var TK=["אוכל","מים","קשר","רפואי"];
 var ROT={
-  1:{
-    "הלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"},{n:"חיפוש הריסות",c:"ים · ויבגי"}],
-    "קוטלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:'מסק"ר נפיץ',c:"רייס · זמל"},{n:"רטוב יום",c:"רייס · זמל"}],
-    "אדלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"},{n:"נוטש בוואדי",c:"קוק · אליפז"}]
-  },
-  2:{
-    "הלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"},{n:"נוטש בוואדי",c:"קוק · אליפז"}],
-    "קוטלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"},{n:"חיפוש הריסות",c:"ים · ויבגי"}],
-    "אדלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:'מסק"ר נפיץ',c:"רייס · זמל"},{n:"רטוב יום",c:"רייס · זמל"}]
-  },
-  3:{
-    "הלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:'מסק"ר נפיץ',c:"רייס · זמל"}],
-    "קוטלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"}],
-    "אדלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"}]
-  }
+  1:{"הלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"},{n:"חיפוש הריסות",c:"ים · ויבגי"}],"קוטלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:"מסקר נפיץ",c:"רייס · זמל"},{n:"רטוב יום",c:"רייס · זמל"}],"אדלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"},{n:"נוטש בוואדי",c:"קוק · אליפז"}]},
+  2:{"הלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"},{n:"נוטש בוואדי",c:"קוק · אליפז"}],"קוטלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"},{n:"חיפוש הריסות",c:"ים · ויבגי"}],"אדלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:"מסקר נפיץ",c:"רייס · זמל"},{n:"רטוב יום",c:"רייס · זמל"}]},
+  3:{"הלר":[{n:"ארן צנחנים",c:"רייס · זמל"},{n:"מסקר נפיץ",c:"רייס · זמל"}],"קוטלר":[{n:"רטוב לילה",c:"קוק · אליפז"},{n:"מארב נגד רכב",c:"קוק · אליפז"}],"אדלר":[{n:"סוכן",c:"ים · ויבגי"},{n:"רועה צאן",c:"ים · ויבגי"}]}
 };
-
 var GS=["הלר","קוטלר","אדלר"];
-var night=1;
-var ST={};
-var OP={};
-var saveT=null;
-var pollT=null;
-var lastSaved="";
+var GI={"הלר":0,"קוטלר":1,"אדלר":2};
+var night=1,ST={},OP={},TKO={},saveT=null,lastS="";
 
-function k(n,g,s){return n+"_"+g+"_"+s;}
-function esc(s){return s.replace(/\\/g,"\\\\").replace(/'/g,"\\'");}
-function empty(){return {ch:[false,false,false,false,false,false,false,false],note:"",alert:false,ready:false,executed:false};}
-
-var TK_ITEMS=["אוכל","מים","קשר","רפואי"];
-var TK_OP={};
-
-function tkKey(n,g){return "tk_"+n+"_"+g;}
+function sk(n,g,si){return "s_"+n+"_"+GI[g]+"_"+si;}
+function tk(n,g){return "t_"+n+"_"+GI[g];}
+function empty(){return {ch:[0,0,0,0,0,0,0,0],note:"",alert:false,ready:false,executed:false};}
 
 function initAll(){
   GS.forEach(function(g){
     [1,2,3].forEach(function(n){
-      (ROT[n][g]||[]).forEach(function(s){
-        var kk=k(n,g,s.n);
-        if(!ST[kk]) ST[kk]=empty();
-      });
-      var tk=tkKey(n,g);
-      if(!ST[tk]) ST[tk]={ch:[false,false,false,false]};
+      (ROT[n][g]||[]).forEach(function(s,si){var kk=sk(n,g,si);if(!ST[kk])ST[kk]=empty();});
+      var t=tk(n,g);if(!ST[t])ST[t]={ch:[0,0,0,0]};
     });
   });
 }
 
-function ts(){
-  var d=new Date();
-  return d.getHours().toString().padStart(2,"0")+":"+d.getMinutes().toString().padStart(2,"0")+":"+d.getSeconds().toString().padStart(2,"0");
-}
+function ts(){var d=new Date();return d.getHours().toString().padStart(2,"0")+":"+d.getMinutes().toString().padStart(2,"0");}
+function setSyncUI(s,m){document.getElementById("sdot").className="sdot"+(s==="ok"?"":" "+(s==="err"?"red":"amber"));document.getElementById("stxt").textContent=m;}
 
-function setSyncUI(state,msg){
-  var dot=document.getElementById("sdot");
-  var txt=document.getElementById("stxt");
-  dot.className="sdot"+(state==="ok"?"":" "+(state==="err"?"red":"amber"));
-  txt.textContent=msg;
-}
-
-async function saveToFirebase(){
+async function save(){
   try{
-    var data=JSON.stringify(ST);
-    if(data===lastSaved) return;
+    var d=JSON.stringify(ST);
+    if(d===lastS)return;
     setSyncUI("amber","שומר...");
-    var res=await fetch(FB_URL,{method:"PUT",body:data,headers:{"Content-Type":"application/json"}});
-    if(res.ok){
-      lastSaved=data;
-      setSyncUI("ok","עודכן "+ts());
-    } else {
-      setSyncUI("err","שגיאת שמירה");
-    }
-  }catch(e){
-    setSyncUI("err","אין חיבור");
-  }
+    var r=await fetch(FB,{method:"PUT",body:d,headers:{"Content-Type":"application/json"}});
+    if(r.ok){lastS=d;setSyncUI("ok","עודכן "+ts());}
+    else setSyncUI("err","שגיאת שמירה");
+  }catch(e){setSyncUI("err","אין חיבור");}
 }
 
-async function loadFromFirebase(){
+async function load(){
   try{
     setSyncUI("amber","מתחבר...");
-    var res=await fetch(FB_URL);
-    if(res.ok){
-      var data=await res.json();
-      if(data){
-        Object.keys(data).forEach(function(kk){
-          if(!data[kk].ch) data[kk].ch=[false,false,false,false,false,false,false,false];
-          ST[kk]=data[kk];
-        });
-        lastSaved=JSON.stringify(ST);
-      }
+    var r=await fetch(FB);
+    if(r.ok){
+      var d=await r.json();
+      if(d){Object.keys(d).forEach(function(k){ST[k]=d[k];});lastS=JSON.stringify(ST);}
       setSyncUI("ok","מחובר "+ts());
     }
-  }catch(e){
-    setSyncUI("err","אין חיבור");
-  }
-  render();
-  calcStats();
-}
-
-async function pollFirebase(){
-  try{
-    var res=await fetch(FB_URL);
-    if(res.ok){
-      var data=await res.json();
-      if(data){
-        var incoming=JSON.stringify(data);
-        if(incoming!==lastSaved){
-          Object.keys(data).forEach(function(kk){
-            if(!data[kk].ch) data[kk].ch=[false,false,false,false,false,false,false,false];
-            ST[kk]=data[kk];
-          });
-          lastSaved=incoming;
-          render();
-          calcStats();
-          setSyncUI("ok","עודכן "+ts());
-        }
-      }
-    }
-  }catch(e){}
-}
-
-function scheduleSave(){
-  if(saveT) clearTimeout(saveT);
-  saveT=setTimeout(saveToFirebase,800);
-}
-
-function sw(n){
-  night=n;
-  [1,2,3].forEach(function(i){
-    document.getElementById("nb"+i).className="nbtn"+(i===n?" on":"");
-  });
+  }catch(e){setSyncUI("err","אין חיבור");}
   render();calcStats();
 }
 
-function showTab(t){
-  document.getElementById("t0").className="tab"+(t===0?" on":"");
-  document.getElementById("t1").className="tab"+(t===1?" on":"");
-  document.getElementById("mp").style.display=t===0?"block":"none";
-  document.getElementById("ap").style.display=t===1?"block":"none";
+async function poll(){
+  try{
+    var r=await fetch(FB);
+    if(r.ok){var d=await r.json();if(d){var s=JSON.stringify(d);if(s!==lastS){Object.keys(d).forEach(function(k){ST[k]=d[k];});lastS=s;render();calcStats();setSyncUI("ok","עודכן "+ts());}}}
+  }catch(e){}
 }
 
-function togTkOpen(tk){TK_OP[tk]=!TK_OP[tk];render();}
+function sched(){if(saveT)clearTimeout(saveT);saveT=setTimeout(save,800);}
 
-function togTkCheck(tk,i,ev){
-  ev.stopPropagation();
-  if(!ST[tk]) ST[tk]={ch:[false,false,false,false]};
-  ST[tk].ch[i]=!ST[tk].ch[i];
-  render();scheduleSave();
-}
+function sw(n){night=n;[1,2,3].forEach(function(i){document.getElementById("nb"+i).className="nbtn"+(i===n?" on":"");});render();calcStats();}
+function showTab(t){document.getElementById("t0").className="tab"+(t===0?" on":"");document.getElementById("t1").className="tab"+(t===1?" on":"");document.getElementById("mp").style.display=t===0?"block":"none";document.getElementById("ap").style.display=t===1?"block":"none";}
 
-function togOpen(kk){OP[kk]=!OP[kk];render();}
+document.addEventListener("click",function(e){
+  var el=e.target.closest("[data-action]");
+  if(!el)return;
+  e.stopPropagation();
+  var a=el.dataset.action,key=el.dataset.key,idx=el.dataset.idx;
+  if(a==="open"){OP[key]=!OP[key];render();}
+  else if(a==="tkopen"){TKO[key]=!TKO[key];render();}
+  else if(a==="check"){ST[key].ch[+idx]=ST[key].ch[+idx]?0:1;render();calcStats();sched();}
+  else if(a==="tkcheck"){if(!ST[key])ST[key]={ch:[0,0,0,0]};ST[key].ch[+idx]=ST[key].ch[+idx]?0:1;render();sched();}
+  else if(a==="ready"){ST[key].ready=true;render();calcStats();sched();}
+  else if(a==="unready"){ST[key].ready=false;render();calcStats();sched();}
+  else if(a==="exec"){ST[key].executed=true;render();calcStats();sched();}
+  else if(a==="unexec"){ST[key].executed=false;render();calcStats();sched();}
+});
 
-function togCheck(kk,i,ev){
-  ev.stopPropagation();
-  ST[kk].ch[i]=!ST[kk].ch[i];
-  render();calcStats();scheduleSave();
-}
-
-function setReady(kk,ev){
-  ev.stopPropagation();
-  ST[kk].ready=true;
-  render();calcStats();scheduleSave();
-}
-
-function unsetReady(kk,ev){
-  ev.stopPropagation();
-  ST[kk].ready=false;
-  render();calcStats();scheduleSave();
-}
-
-function setExecuted(kk,ev){
-  ev.stopPropagation();
-  ST[kk].executed=true;
-  render();calcStats();scheduleSave();
-}
-
-function unsetExecuted(kk,ev){
-  ev.stopPropagation();
-  ST[kk].executed=false;
-  render();calcStats();scheduleSave();
-}
-
-function onNote(kk,v){
-  ST[kk].note=v;
+document.addEventListener("input",function(e){
+  var el=e.target.closest("[data-notekey]");
+  if(!el)return;
+  var key=el.dataset.notekey,v=el.value;
+  ST[key].note=v;
   var w=["בעיה","חריג","!","דחוף","פצוע","תקלה"];
-  ST[kk].alert=v.trim().length>0&&w.some(function(x){return v.indexOf(x)>=0;});
-  calcStats();doAlerts();scheduleSave();
-}
+  ST[key].alert=v.trim().length>0&&w.some(function(x){return v.indexOf(x)>=0;});
+  calcStats();doAlerts();sched();
+});
 
 function render(){
   var html="";
   GS.forEach(function(g){
     var slist=ROT[night][g]||[];
-    var rc=slist.filter(function(s){var st=ST[k(night,g,s.n)];return st&&st.ready;}).length;
+    var rc=slist.filter(function(s){var st=ST[sk(night,g,s.n)];return st&&st.ready;}).length;
     var pct=slist.length?Math.round(rc/slist.length*100):0;
     var pcol=pct===100?"#1D9E75":"#1a1a1a";
-    var tk=tkKey(night,g);
-    if(!ST[tk]) ST[tk]={ch:[false,false,false,false]};
-    var tkSt=ST[tk];
-    var tkCnt=tkSt.ch.filter(Boolean).length;
-    var tkAll=tkCnt===TK_ITEMS.length;
-    var tkOpen=!!TK_OP[tk];
-    var tkEkk=esc(tk);
+    var tkey=tk(night,g);
+    if(!ST[tkey])ST[tkey]={ch:[0,0,0,0]};
+    var tst=ST[tkey],tcnt=tst.ch.filter(Boolean).length,tall=tcnt===TK.length,topen=!!TKO[tkey];
 
-    var tkItems="";
-    TK_ITEMS.forEach(function(item,ci){
-      var chk=tkSt.ch[ci];
-      tkItems+='<div class="tk-item" onclick="togTkCheck(\''+tkEkk+'\','+ci+',event)">'
-        +'<div class="tk-cb'+(chk?' on':'')+'>'+(chk?'✓':'')+'</div>'
-        +'<div class="tk-lbl'+(chk?' done':'')+'">'+item+'</div>'
-        +'</div>';
+    var tkitems="";
+    TK.forEach(function(item,ci){
+      var chk=tst.ch[ci];
+      tkitems+='<div class="tk-item" data-action="tkcheck" data-key="'+tkey+'" data-idx="'+ci+'">'
+        +'<div class="tk-cb'+(chk?" on":"")+'>'+(chk?"✓":"")+"</div>"
+        +'<div class="tk-lbl'+(chk?" done":"")+'">'+item+"</div>"
+        +"</div>";
     });
 
-    var shtml="";
-    var tkHTML='<div class="tk-wrap">'
-      +'<div class="tk-header" onclick="togTkOpen(\''+tkEkk+'\')"> '
-      +'<div style="display:flex;align-items:center;gap:8px">'
-      +'<span style="font-size:14px">🔍</span>'
-      +'<span class="tk-title">תקינות צוות</span>'
-      +'</div>'
-      +'<div style="display:flex;align-items:center;gap:6px">'
-      +'<span class="tk-count">'+(tkAll?'✓ תקין':tkCnt+'/'+TK_ITEMS.length)+'</span>'
-      +'<span style="font-size:10px;color:#aaa;'+(tkOpen?'transform:rotate(180deg)':'')+'display:inline-block">▼</span>'
-      +'</div></div>'
-      +'<div class="tk-body'+(tkOpen?' open':'')+'">'+tkItems+'</div>'
-      +'</div>';
+    var tkblock='<div class="tk-wrap">'
+      +'<div class="tk-hdr" data-action="tkopen" data-key="'+tkey+'">'
+      +'<div style="display:flex;align-items:center;gap:8px"><span>🔍</span><span class="tk-title">תקינות צוות</span></div>'
+      +'<div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;color:#888">'+(tall?"✓ תקין":tcnt+"/"+TK.length)+"</span>"
+      +'<span style="font-size:10px;color:#aaa;display:inline-block;'+(topen?"transform:rotate(180deg)":"")+'">▼</span></div></div>'
+      +'<div class="tk-body'+(topen?" open":"")+'">'+tkitems+"</div></div>";
 
+    var shtml="";
     slist.forEach(function(s,i){
-      var kk=k(night,g,s.n);
-      var ekk=esc(kk);
-      var st=ST[kk]||empty();
+      var kk=sk(night,g,i);
+      if(!ST[kk])ST[kk]=empty();
+      var st=ST[kk];
       var cnt=st.ch.filter(Boolean).length;
       var allok=cnt===CL.length;
       var isOpen=!!OP[kk];
-      var dcls=st.executed?"dv":st.ready?"dv":cnt>0?"da":"dg";
-      var dotStyle=st.executed?"background:#185FA5":"";
+      var dcls=st.executed?"de":st.ready?"dv":cnt>0?"da":"dg";
 
       var clitems="";
-      for(var ci=0;ci<CL.length;ci++){
+      CL.forEach(function(txt,ci){
         var chk=st.ch[ci];
-        clitems+='<div class="ci" onclick="togCheck(\''+ekk+'\','+ci+',event)">'
-          +'<div class="cb'+(chk?' on':'')+'>'+(chk?'✓':'')+'</div>'
-          +'<div class="clbl'+(chk?' done':'')+'">'+CL[ci]+'</div>'
-          +'</div>';
+        clitems+='<div class="ci" data-action="check" data-key="'+kk+'" data-idx="'+ci+'">'
+          +'<div class="cb'+(chk?" on":"")+'>'+(chk?"✓":"")+"</div>"
+          +'<div class="clbl'+(chk?" done":"")+'">'+txt+"</div>"
+          +"</div>";
+      });
+
+      var rbtn="";
+      if(st.executed){
+        rbtn='<div style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><div class="rdone">תחנה מוכנה ✓</div></div>'
+          +'<div style="display:flex;gap:8px;align-items:center"><div class="edone">בוצע בפועל ✓</div>'
+          +'<button class="undo-btn" data-action="unexec" data-key="'+kk+'">בטל</button></div>';
+      } else if(st.ready){
+        rbtn='<div style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><div class="rdone">תחנה מוכנה ✓</div>'
+          +'<button class="undo-btn" data-action="unready" data-key="'+kk+'">בטל</button></div>'
+          +'<button class="ebtn" data-action="exec" data-key="'+kk+'">סמן ביצוע תחנה</button>';
+      } else {
+        rbtn='<button class="rbtn" data-action="ready" data-key="'+kk+'"'+(allok?"":" disabled")+'>'
+          +(allok?"סמן תחנה מוכנה ✓":"השלם כל הסעיפים ("+cnt+"/"+CL.length+")")+"</button>";
       }
 
-      var rbtn=st.executed
-        ?'<div style="display:flex;gap:8px;align-items:center">'
-          +'<div class="rdone" style="flex:1">תחנה מוכנה ✓</div>'
-          +'</div>'
-          +'<div style="display:flex;gap:8px;align-items:center;margin-top:8px">'
-          +'<div class="edone" style="flex:1">בוצע בפועל ✓</div>'
-          +'<button style="padding:8px 12px;border-radius:8px;border:1px solid #ddd;background:#fff;font-size:12px;cursor:pointer;font-family:inherit;color:#888;white-space:nowrap" onclick="unsetExecuted(\''+ekk+'\',event)">בטל</button>'
-          +'</div>'
-        :st.ready
-        ?'<div style="display:flex;gap:8px;align-items:center">'
-          +'<div class="rdone" style="flex:1">תחנה מוכנה ✓</div>'
-          +'<button style="padding:8px 12px;border-radius:8px;border:1px solid #ddd;background:#fff;font-size:12px;cursor:pointer;font-family:inherit;color:#888;white-space:nowrap" onclick="unsetReady(\''+ekk+'\',event)">בטל</button>'
-          +'</div>'
-          +'<button class="ebtn" onclick="setExecuted(\''+ekk+'\',event)">סמן ביצוע תחנה</button>'
-        :'<button class="rbtn"'+(allok?'':' disabled')+' onclick="setReady(\''+ekk+'\',event)">'
-          +(allok?'סמן תחנה מוכנה ✓':'השלם כל הסעיפים ('+cnt+'/'+CL.length+')')
-          +'</button>';
-
-      shtml+='<div class="sr">'
-        +'<div class="sh" onclick="togOpen(\''+ekk+'\')"> '
+      shtml+='<div class="sr"><div class="sh" data-action="open" data-key="'+kk+'">'
         +'<div style="display:flex;align-items:center;gap:10px;min-width:0;flex:1">'
-        +'<span class="dot '+dcls+'"'+(dotStyle?' style="'+dotStyle+'"':'')+' ></span>'
+        +'<span class="dot '+dcls+'"></span>'
         +'<div style="min-width:0;flex:1">'
-        +'<div style="display:flex;align-items:center;gap:5px">'
-        +'<span style="font-size:12px;color:#aaa;flex-shrink:0">'+(i+1)+'.</span>'
-        +'<span class="sname">'+s.n+'</span>'
-        +'</div>'
-        +'<div class="scmd">'+s.c+'</div>'
-        +'</div></div>'
+        +'<div style="display:flex;align-items:center;gap:5px"><span style="font-size:12px;color:#aaa;flex-shrink:0">'+(i+1)+'.</span><span class="sname">'+s.n+'</span></div>'
+        +'<div class="scmd">'+s.c+'</div></div></div>'
         +'<div style="display:flex;align-items:center;gap:8px;flex-shrink:0;padding-right:6px">'
-        +'<span style="font-size:12px;color:#aaa">'+cnt+'/'+CL.length+'</span>'
-        +'<span style="font-size:11px;color:#aaa;display:inline-block;'+(isOpen?'transform:rotate(180deg)':'')+'">▼</span>'
-        +'</div></div>'
-        +'<div class="sd'+(isOpen?' open':'')+'"> '
-        +(st.alert?'<div class="abadge">⚠ חריגה</div>':'')
-        +'<textarea class="note" rows="2" placeholder="הערות / בעיות..." oninput="onNote(\''+ekk+'\',this.value)">'+st.note+'</textarea>'
+        +'<span style="font-size:12px;color:#aaa">'+cnt+"/"+CL.length+"</span>"
+        +'<span style="font-size:11px;color:#aaa;display:inline-block;'+(isOpen?"transform:rotate(180deg)":"")+'">▼</span></div></div>'
+        +'<div class="sd'+(isOpen?' open':'')+'">'
+        +(st.alert?'<div class="abadge">⚠ חריגה</div>':"")
+        +'<textarea class="note" rows="2" placeholder="הערות / בעיות..." data-notekey="'+kk+'">'+st.note+"</textarea>"
         +'<div class="cl-lbl">צ\'ק ליסט מפקד מגרש</div>'
-        +'<div class="cl-wrap">'+clitems+'</div>'
-        +rbtn
-        +'</div></div>';
+        +'<div class="cl-wrap">'+clitems+"</div>"
+        +rbtn+"</div></div>";
     });
 
-    html+='<div class="gc">'
-      +'<div class="gh">'
-      +'<div><div class="gt">'+g+'</div><div class="gs">'+(slist[0]?slist[0].c:'')+'</div></div>'
-      +'<div style="text-align:left">'
-      +'<div style="font-size:14px;font-weight:700;color:'+pcol+'">'+pct+'%</div>'
-      +'<div style="font-size:10px;color:#888">'+rc+'/'+slist.length+'</div>'
-      +'</div></div>'
+    html+='<div class="gc"><div class="gh">'
+      +'<div><div class="gt">'+g+'</div><div class="gs">'+(slist[0]?slist[0].c:"")+"</div></div>"
+      +'<div style="text-align:left"><div style="font-size:14px;font-weight:700;color:'+pcol+'">'+pct+'%</div>'
+      +'<div style="font-size:10px;color:#888">'+rc+"/"+slist.length+"</div></div></div>"
       +'<div class="pbar-bg"><div class="pbar-fg" style="width:'+pct+'%"></div></div>'
-      +tkHTML
-      +shtml+'</div>';
+      +tkblock+shtml+"</div>";
   });
   document.getElementById("mp").innerHTML=html;
 }
@@ -442,13 +292,12 @@ function total(){return GS.reduce(function(a,g){return a+(ROT[night][g]||[]).len
 function calcStats(){
   var tot=total(),done=0,prog=0,al=0,exec=0;
   GS.forEach(function(g){
-    (ROT[night][g]||[]).forEach(function(s){
-      var st=ST[k(night,g,s.n)];
-      if(!st) return;
-      if(st.executed) exec++;
-      if(st.ready) done++;
-      else if(st.ch.some(Boolean)) prog++;
-      if(st.alert) al++;
+    (ROT[night][g]||[]).forEach(function(s,i){
+      var st=ST[sk(night,g,i)];if(!st)return;
+      if(st.executed)exec++;
+      if(st.ready)done++;
+      else if(st.ch&&st.ch.some(Boolean))prog++;
+      if(st.alert)al++;
     });
   });
   document.getElementById("s0").textContent=done;
@@ -464,20 +313,18 @@ function calcStats(){
 function doAlerts(){
   var items=[];
   GS.forEach(function(g){
-    (ROT[night][g]||[]).forEach(function(s){
-      var st=ST[k(night,g,s.n)];
-      if(st&&st.alert) items.push(g+' · '+s.n+': '+st.note);
+    (ROT[night][g]||[]).forEach(function(s,i){
+      var st=ST[sk(night,g,i)];
+      if(st&&st.alert)items.push(g+" · "+s.n+": "+st.note);
     });
   });
   document.getElementById("ai").innerHTML=items.length
-    ?items.map(function(a){return '<div class="aitem">· '+a+'</div>';}).join('')
+    ?items.map(function(a){return '<div class="aitem">· '+a+"</div>";}).join("")
     :'<span style="font-size:12px;color:#791F1F">אין חריגות כרגע</span>';
 }
 
 initAll();
-loadFromFirebase().then(function(){
-  pollT=setInterval(pollFirebase,5000);
-});
+load().then(function(){setInterval(poll,5000);});
 </script>
 </body>
 </html>
